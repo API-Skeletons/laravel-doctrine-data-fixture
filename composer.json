@@ -1,0 +1,25 @@
+{
+    "name": "api-skeletons/laravel-doctrine-data-fixtures",
+    "description": "Doctrine Data Fixtures for Laravel",
+    "type": "library",
+    "require": {
+        "php": "^8.0",
+        "doctrine/data-fixtures": "^1.5",
+        "laravel/framework": "^8.82"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ApiSkeletons\\LaravelDoctrineDataFixtures\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tom H Anderson",
+            "email": "tom.h.anderson@gmail.com"
+        }
+    ]
+}
