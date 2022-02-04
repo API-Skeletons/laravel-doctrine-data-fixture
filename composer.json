@@ -13,7 +13,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "ApiSkeletons\\LaravelDoctrineDataFixtures\\": "src/"
+            "ApiSkeletons\\Laravel\\Doctrine\\DataFixtures\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ApiSkeletonsTest\\Laravel\\Doctrine\\DataFixtures\\": "test/"
         }
     },
     "authors": [
