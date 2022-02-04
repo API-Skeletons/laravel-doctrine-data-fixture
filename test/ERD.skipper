@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<skipper version="3.2.36.1772" mvc="Without MVC" orm="Doctrine2" name="laravel-doctrine-data-fixtures" uuid="39b34e79-1578-4571-822d-1d553de707b4">
+  <module name="\Testing" local-name="Testing" namespace="\ApiSkeletonsTest\Laravel\Doctrine\DataFixtures\Entity" local-namespace="ApiSkeletonsTest\Laravel\Doctrine\DataFixtures\Entity" export-format="Doctrine2Xml" export-path="config" uuid="9e91d27a-6e7e-4a9b-9adc-4d2a1e8eebb6">
+    <entity name="\ApiSkeletonsTest\Laravel\Doctrine\DataFixtures\Entity\Fixture1" local-name="Fixture1" namespace="\ApiSkeletonsTest\Laravel\Doctrine\DataFixtures\Entity" uuid="82ddbfe6-1f9d-487b-9ad2-e887e5b4b8e0">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="e6cd7573-7b64-40fc-b9e8-ddc250334286"/>
+      <field name="name" type="string" required="true" uuid="1a5ecb93-0bc5-4421-848b-4bf152c91056"/>
+    </entity>
+    <entity name="\ApiSkeletonsTest\Laravel\Doctrine\DataFixtures\Entity\Fixture2" local-name="Fixture2" namespace="\ApiSkeletonsTest\Laravel\Doctrine\DataFixtures\Entity" uuid="f421ac1b-402e-47c1-a7d2-d1fe523ade39">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="6d054bf2-634c-4b8a-b9c1-25c52212231d"/>
+      <field name="name" type="string" required="true" uuid="8fb4509b-1395-414e-8731-9205e358886e"/>
+    </entity>
+  </module>
+  <visual-data>
+    <entity uuid="82ddbfe6-1f9d-487b-9ad2-e887e5b4b8e0" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="39" position-y="35" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
+    <entity uuid="f421ac1b-402e-47c1-a7d2-d1fe523ade39" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="142" position-y="34" size-x="0" size-x2="77" size-y="0" size-y2="45"/>
+    <module uuid="9e91d27a-6e7e-4a9b-9adc-4d2a1e8eebb6" bg-color="#E7F5FD" position-x="61" position-y="72" size-x="11" size-x2="530" size-y="22" size-y2="474"/>
+    <project uuid="39b34e79-1578-4571-822d-1d553de707b4" size-x="0" size-x2="631" size-y="0" size-y2="589"/>
+  </visual-data>
+</skipper>

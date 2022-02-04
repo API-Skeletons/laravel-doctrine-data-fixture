@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ApiSkeletons\Laravel\Doctrine\DataFixtures\Console\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Application;
 
@@ -12,7 +15,9 @@ class ListCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'doctrine:data-fixtures:list {group?}';
+    protected $signature = 'doctrine:data-fixtures:list
+        {group? : The fixtures group name}
+    ';
 
     /**
      * The console command description.
@@ -21,38 +26,20 @@ class ListCommand extends Command
      */
     protected $description = 'List all groups or data-fixtures for a group';
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     protected array $config = [];
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
+     * Execute the console command.
      */
-    public function __construct(Application $application)
+    public function handle(): int
     {
-        parent::__construct();
-
-        $this->config = $application['config']['doctrine-data-fixtures'];
+        $this->config = config('doctrine-data-fixtures');
 
         if ($this->argument('group')) {
-            if (! isset($this->config[$this->argument('group')])) {
-                throw new \Exception('data-fixtures group does not exist');
-            }
-
             $this->config = $this->config[$this->argument('group')];
         }
-    }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
-    public function handle()
-    {
         if (! $this->argument('group')) {
             foreach ($this->config as $groupName => $groupConfig) {
                 $this->info($groupName);
