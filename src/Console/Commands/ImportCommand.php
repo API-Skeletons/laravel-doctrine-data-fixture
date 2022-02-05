@@ -6,11 +6,10 @@ namespace ApiSkeletons\Laravel\Doctrine\DataFixtures\Console\Commands;
 
 use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
-use Doctrine\Common\DataFixtures\Purger\PurgerInterface;
-use Doctrine\Persistence\ObjectManager;
-use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Foundation\Application;
+
+use function app;
+use function config;
 
 class ImportCommand extends Command
 {
@@ -28,51 +27,45 @@ class ImportCommand extends Command
      */
     protected $description = 'Import a group of fixtures.';
 
-    /** @var string[] */
-    protected array $config = [];
-
-    protected ObjectManager $objectManager;
-
-    protected Loader $loader;
-
-    protected PurgerInterface $purger;
-
     /**
      * Execute the console command.
      */
     public function handle(): int
     {
         // Init loader
-        $this->config = config('doctrine-data-fixtures');
+        $config = config('doctrine-data-fixtures');
 
         if (! $this->argument('group')) {
             return 1;
         }
 
-        if (! isset($this->config[$this->argument('group')])) {
-            throw new Exception('data-fixtures group does not exist');
+        if (! isset($config[$this->argument('group')])) {
+            $this->error('data-fixtures group does not exist');
+
+            return 1;
         }
 
-        $this->config = $this->config[$this->argument('group')];
+        $config = $config[$this->argument('group')];
 
-        $this->objectManager = $application->get($this->config['objectManager']);
-        $this->loader        = $application->get($this->config['loader']);
-        $this->purger        = $application->get($this->config['purger']);
+        $objectManager = app($config['objectManager']);
+        $purger        = app($config['purger']);
+        $executorClass = $config['executor'];
+        $loader        = new Loader();
 
+        $executor = new $executorClass($objectManager, $purger);
 
-
-        foreach ($this->config['fixtures'] as $fixture) {
-            $this->loader->addFixture($fixture);
+        foreach ($config['fixtures'] as $fixture) {
+            $loader->addFixture(app($fixture));
         }
 
         // --purge-with-truncate is only valid for the ORMPurger
         if ($this->option('purge-with-truncate')) {
-            $this->purger->setPurgeMode(ORMPurger::PURGE_MODE_TRUNCATE);
+            $purger->setPurgeMode(ORMPurger::PURGE_MODE_TRUNCATE);
         }
 
-        $this->executor->execute($this->loader->getFixtures(), ! $this->option('do-not-append'));
+        $executor->execute($loader->getFixtures(), ! $this->option('do-not-append'));
 
-        $this->success('Fixtures loaded');
+        $this->info('Fixtures loaded');
 
         return 0;
     }

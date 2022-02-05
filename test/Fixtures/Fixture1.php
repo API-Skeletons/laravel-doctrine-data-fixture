@@ -41,9 +41,9 @@ class Fixture1 implements
 
             if (! $entity) {
                 $entity = new Fixture1Entity();
-                $objectManager->persist($entity);
 
                 $entity->setId($row['id']);
+                $objectManager->persist($entity);
             }
 
             $entity
