@@ -90,8 +90,10 @@ List all groups or list all fixtures for a group.
 php artisan doctrine:data-fixtures:list [<group>]
 ```
 
-### Executing Fixture Group through Artisan command
----------------------------------------------------
+The `<group>` is optional.
+
+
+### Executing a Fixture Group through Artisan command
 
 ```sh
 php artisan doctrine:data-fixtures:import <group> [--purge-with-truncate] [--do-not-append]
@@ -109,23 +111,27 @@ running fixtures for the ORMPurger only.
 `--do-not-append` will delete all data in the database before running fixtures.
 
 
-Executing Fixture Group from code
+Executing a Fixture Group from code
 ---------------------------------
 
 For unit testing or other times you must run your fixtures from within code,
 follow this example:
 
 ```php
-$config = $application['config']['doctrine-data-fixtures.' . $groupName];
+use use Doctrine\Common\DataFixtures\Loader;
 
-$objectManager = $application->get($config['objectManager']);
-$loader = $application->get($config['loader']);
-$purger = $application->get($config['purger']);
+$config = config('doctrine-data-fixtures')[$groupName];
+
+$objectManager = app($config['objectManager']);
+$purger        = app($config['purger']);
+$executorClass = $config['executor'];
+$loader        = new Loader();
 
 foreach ($config['fixtures'] as $fixture) {
     $loader->addFixture($fixture);
 }
 
+$executor = new $executorClass($objectManager, $purger);
 $executor->execute($loader->getFixtures());
 ```
 
