@@ -1,5 +1,13 @@
 # Laravel Doctrine Data Fixtures
 
+[![Build Status](https://github.com/API-Skeletons/laravel-doctrine-data-fixtures/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/API-Skeletons/laravel-doctrine-data-fixtures/actions/workflows/continuous-integration.yml?query=branch%3Amain)
+[![Code Coverage](https://codecov.io/gh/API-Skeletons/laravel-doctrine-data-fixtures/branch/main/graphs/badge.svg)](https://codecov.io/gh/API-Skeletons/laravel-doctrine-data-fixtures/branch/main)
+[![PHP Version](https://img.shields.io/badge/PHP-8.0%2b-blue)](https://img.shields.io/badge/PHP-8.0%2b-blue)
+[![Laravel Version](https://img.shields.io/badge/Laravel-8.x%2b-red)](https://img.shields.io/badge/Laravel-5.7%20to%208.x-red)
+[![Total Downloads](https://poser.pugx.org/api-skeletons/laravel-doctrine-data-fixtures/downloads)](//packagist.org/packages/api-skeletons/laravel-doctrine-data-fixtures)
+[![License](https://poser.pugx.org/api-skeletons/laravel-doctrine-data-fixtures/license)](//packagist.org/packages/api-skeletons/laravel-doctrine-data-fixtures)
+
+
 Laravel has built-in support for 'seed' data.  In seed data, the classes
 are not namespaced and many developers treat seed data as a one-time
 import.  Seed data often uses auto-increment primary keys.  Perhaps
