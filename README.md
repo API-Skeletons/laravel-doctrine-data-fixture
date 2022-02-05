@@ -1,5 +1,4 @@
-Laravel Doctrine Data Fixtures
-------------------------------
+# Laravel Doctrine Data Fixtures
 
 Laravel has built-in support for 'seed' data.  In seed data, the classes
 are not namespaced and many developers treat seed data as a one-time
