@@ -18,7 +18,11 @@ class ImportCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'doctrine:data-fixtures:import {group} {--purge-with-truncate} {--do-not-append}';
+    protected $signature = 'doctrine:data-fixtures:import
+        {group : The fixtures group name}
+        {--purge-with-truncate : if specified will purge the object manager tables before running fixtures for the ORMPurger only}
+        {--do-not-append : will delete ALL data in the database before running fixtures}
+    ';
 
     /**
      * The console command description.
