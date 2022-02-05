@@ -31,5 +31,12 @@
             "name": "Tom H Anderson",
             "email": "tom.h.anderson@gmail.com"
         }
-    ]
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ApiSkeletons\\Laravel\\Doctrine\\DataFixtures\\ServiceProvider"
+            ]
+        }
+    }
 }
