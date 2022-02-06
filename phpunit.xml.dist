@@ -28,5 +28,6 @@
         <env name="DB_CONNECTION" value="sqlite"/>
         <env name="DB_DATABASE" value=":memory:"/>
         <env name="APP_KEY" value="base64:2fl+Ktvkfl+Fuz4Qp/A75G2RTiWVA/ZoKZvp6fiiM10="/>
+        <env name="CODECOV_TOKEN" value="198fa79c-293d-4026-b45b-283c650a3b06"/>
     </php>
 </phpunit>
