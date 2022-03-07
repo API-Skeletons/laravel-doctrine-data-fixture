@@ -52,7 +52,7 @@ composer require api-skeletons/laravel-doctrine-data-fixtures
 A `doctrine-data-fixtures.php` configuration file is required.  Publish the included config to your project:
 
 ```sh
-php artisan vendor:publish --tag=config
+php artisan vendor:publish --tag=config --provider="ApiSkeletons\Laravel\Doctrine\DataFixtures\ServiceProvider"
 ```
 
 
